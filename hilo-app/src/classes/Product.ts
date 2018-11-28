@@ -1,3 +1,17 @@
+
+enum Category {
+  Toiletries = 0,
+  Frozen,
+  Meat,
+  Dry,
+  PCare,
+  Cleaners,
+  Beverages,
+
+}
+
+let avatarPath = "/src/assets/items/";
+
 export class Product{
 
   static idnum: number =0;
@@ -8,6 +22,7 @@ export class Product{
   quantity: number;
   category: string;
   description: string;
+  avatar: string;
 
   constructor(name: string, unitPrice: number, unit: string, quantity: number, category: number, description: string){
     this.id = Product.nextId();
@@ -17,6 +32,8 @@ export class Product{
     this.category = Category[category];
     this.quantity = quantity;
     this.description = description;
+    this.avatar = this.genAvatar();
+    //console.log(this.getAvatar());
   }
 
   static nextId(){
@@ -54,6 +71,10 @@ export class Product{
 
   getDescription(){
     return this.description;
+  }
+
+  getAvatar(){
+    return this.avatar;
   }
 
   getValue(){
@@ -97,5 +118,9 @@ export class Product{
     this.item_update("q", this.getQuantity() + q);
   }
 
+
+  genAvatar(){
+    return avatarPath + this.getCategory() + "/" + this.getName() + ".jpg";
+  }
 
 }
