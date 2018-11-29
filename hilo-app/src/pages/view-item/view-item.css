@@ -6,8 +6,6 @@ page-view-item .description {
   color: #4d4d4d;
   font-style: italic;
   font-size: 110%; }
-page-view-item ion-title {
-  text-align: center; }
 page-view-item img {
   max-height: 500px; }
 

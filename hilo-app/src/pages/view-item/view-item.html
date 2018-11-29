@@ -8,7 +8,16 @@
 
   <ion-navbar>
     <ion-title>Purchase: {{ getItem().getName()}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="showCart()">
+        <ion-badge color="#007aff">{{ cart.getCount()}}</ion-badge>
+        <ion-icon class="cart" name="cart" (click)="showCart()"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
+
 
 </ion-header>
 
@@ -18,10 +27,7 @@
 
     <!--1st Row-->
     <ion-row>
-      <ion-col col-6>
         <ion-title>{{item.getName()}}</ion-title>
-      </ion-col>
-      <ion-col col-6></ion-col>
     </ion-row>
 
     <!--2nd Row-->
@@ -34,18 +40,18 @@
       <!--Purchase Section-->
       <ion-col col-6>
         <p>
-          1 {{item.getUnit(1)}} = ${{item.getPrice().toFixed(2)}} <br/>
+           {{getInput()}} {{item.getUnit(getInput())}} = ${{getCurrPrice().toFixed(2)}} <br/>
         </p>
 
           <!--Quantity Input-->
           <ion-item>
             <ion-label stacked>Qty: </ion-label>
-            <ion-input type="number" min=1 max={{item.getPrice()}} step=1></ion-input>
+            <ion-input type="number" min=1 max={{item.getQuantity()}} step=1 [(ngModel)]="inputValue"></ion-input>
           </ion-item>
           <br/>
 
           <!--Add to Cart button-->
-          <button ion-button>
+          <button ion-button (click)="addtoCart()">
             <ion-icon name="cart"></ion-icon>
             Add to Cart
           </button>

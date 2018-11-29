@@ -11,6 +11,13 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Browse</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="showCart()">
+        <ion-badge color="#007aff">{{cart.getCount()}}</ion-badge>
+        <ion-icon class="cart" name="cart" (click)="showCart()"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

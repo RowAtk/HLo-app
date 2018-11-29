@@ -10,7 +10,6 @@ export class Customer extends User{
   firstname: string;
   surname: string;
   preferences: Array<string> = [];
-  cart: Cart;
 
   constructor(username: string, password: string, firstname: string, surname: string){
     super();
@@ -19,7 +18,6 @@ export class Customer extends User{
     this.password = password;
     this.firstname = firstname;
     this.surname = surname;
-    this.cart = new Cart();
   }
 
   static nextId(){
@@ -50,11 +48,5 @@ export class Customer extends User{
     return this.preferences;
   }
 
-  getCart(){
-    return this.cart;
-  }
 
-  emptyCart(){
-    this.cart = new Cart();
-  }
 }

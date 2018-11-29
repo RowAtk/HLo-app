@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {PicviewPage} from "../pages/picview/picview";
 import {ViewItemPage} from "../pages/view-item/view-item";
+import {CartPage} from "../pages/cart/cart";
+import { Cart } from "../classes/Cart";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {ViewItemPage} from "../pages/view-item/view-item";
     ListPage,
     BrowsePage,
     PicviewPage,
-    ViewItemPage
+    ViewItemPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -32,11 +35,13 @@ import {ViewItemPage} from "../pages/view-item/view-item";
     ListPage,
     BrowsePage,
     ViewItemPage,
-    PicviewPage
+    PicviewPage,
+    CartPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Cart,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

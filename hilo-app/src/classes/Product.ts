@@ -7,7 +7,7 @@ enum Category {
   PCare,
   Cleaners,
   Beverages,
-
+  Produce,
 }
 
 let avatarPath = "../../assets/imgs/items/";
@@ -20,6 +20,7 @@ export class Product{
   unit: string;
   unitPrice: number;
   quantity: number;
+  qtoBuy: number = 0;
   category: string;
   description: string;
   avatar: string;
@@ -30,6 +31,10 @@ export class Product{
     this.unitPrice = unitPrice;
     if(unit !== ""){this.unit = unit;}else{this.unit = "Unit(s)";}
     this.category = Category[category];
+    if(this.category == "PCare"){this.category = "Personal Care";}
+    if(this.category == "Dry"){this.category = "Dry Goods";}
+    if(this.category == "Frozen"){this.category = "Frozen Food";}
+    if(this.category == "PCare"){this.category = "Personal Care";}
     this.quantity = quantity;
     this.description = description;
     this.avatar = this.genAvatar();
@@ -72,6 +77,10 @@ export class Product{
     return this.quantity;
   }
 
+  getToBuy(){
+    return this.qtoBuy;
+  }
+
   getCategory(){
     return this.category;
   }
@@ -86,6 +95,14 @@ export class Product{
 
   getValue(){
       return this.getPrice() * this.getQuantity();
+  }
+
+  getBuyVal(){
+    return this.getPrice() * this.getToBuy();
+  }
+
+  getPartialValue(q){
+    return this.getPrice() * q;
   }
 
   item_update(tag: string, value: any){
@@ -107,6 +124,9 @@ export class Product{
         break;
       case "d":
         this.description = value;
+        break;
+      case "b":
+        this.qtoBuy = value;
         break;
       default:
         console.log("Invalid update option");
