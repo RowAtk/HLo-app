@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Browse</ion-title>
   </ion-navbar>
 
@@ -15,20 +18,24 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-avatar item-start>
-        <img src="assets/">
+    <ion-item *ngFor="let item of items" (click)="viewItem(item)">
+
+      <!--Item Image-->
+      <ion-avatar item-start (click)="viewPic(item); $event.stopPropagation();">
+        <img src={{item.getAvatar()}}>
       </ion-avatar>
-      {{item.getName()}}
 
-      <div align-items-center>
-        {{item.getDescription()}}
-      </div>
+      <!--Item Name-->
+      <h1>{{item.getName()}}</h1>
 
-      <div class="item-note" item-end>
-        ${{item.getPrice()}}
+      <!--Item Description-->
+      <h2 align-items-center>{{item.getDescription()}}</h2>
+
+      <!--Item Price-->
+      <div class="price" item-end>
+        ${{item.getPrice().toFixed(2)}}
       </div>
-    </button>
+    </ion-item>
   </ion-list>
 
 </ion-content>

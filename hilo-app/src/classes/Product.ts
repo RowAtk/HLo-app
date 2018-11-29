@@ -10,7 +10,7 @@ enum Category {
 
 }
 
-let avatarPath = "/src/assets/items/";
+let avatarPath = "../../assets/imgs/items/";
 
 export class Product{
 
@@ -59,6 +59,13 @@ export class Product{
 
   getPrice(){
     return this.unitPrice;
+  }
+
+  getUnit(q: number){
+    if(q == 1){
+      return this.unit.slice(0,-3)
+    }
+    return this.unit;
   }
 
   getQuantity(){
